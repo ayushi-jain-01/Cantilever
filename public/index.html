@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    
+</head>
+<body>
+
+    <!-- navbar header  -->
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li> <a href="#"> Home </a></li>
+            <li><a href="#"> About</a></li>
+            <li><a href="#"> Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="banner">
+        <div class="banner-content">
+            <h1> WriteIt </h1>
+            <p> "Your Words. Your Voice. Your Story" </p>
+        </div>
+    </section>
+
+    <!-- CREATE BLOG BUTTON -->
+    <div style="text-align:center; margin-top: 30px;">
+    <button onclick="showCreateForm()" class="create_blog"> + NEW POST</button>
+    </div>
+
+    <!-- CREATE FORM -->
+    <div id="createForm" class="hidden" style="text-align:center; margin: 20px;">
+    <input type="text" id="newTitle" placeholder="Blog Title"><br><br>
+    <textarea id="newContent" placeholder="Blog Content"></textarea><br><br>
+    <input type="text" id="newAuthor" placeholder="Author"><br><br>
+    <button class="blogbutton" onclick="addBlog()">Submit</button>
+    <button class="blogbutton" onclick="hideCreateForm()">Cancel</button>
+    </div>
+
+    <!-- BLOG LIST -->
+    <div id="blogsWrapper" class="blog-container"></div>
+
+
+    <!-- footer  -->
+    <footer class="footer">
+            &copy; 2025 YourBlogName. All rights reserved.
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    
+</body>
+</html>
