@@ -1,13 +1,14 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import express from 'express';
 import mongoose from 'mongoose';
 import methodOverride from 'method-override';
 import bodyParser from 'body-parser';
 import Blog from './models/blog.js';
-import dotenv from 'dotenv';
 import cors from 'cors';
 
 const app = express();
-dotenv.config();
+const PORT = process.env.PORT || 3000;
 
 // middlewares
 app.use(cors());
@@ -62,13 +63,19 @@ app.delete("/api/blogs/:id", async (req, res) => {
     }
 });
 
-mongoose.connect (process.env.MONGO_URI)
-.then(() =>{
-    console.log("Connected to database")
-    app.listen(3000, () =>{
-        console.log('Server is running on port 3000');
+mongoose.connect (process.env.MONGO_URI,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(() =>{
+    console.log("Connected to database");
+    app.listen(PORT, () =>{
+        console.log(`Server is running on port ${PORT}`);
     });  
 })
-.catch(() =>{
-    console.log("Connection failed!");
+.catch((err) =>{
+    console.error("Failed to connect MongoDB: ",err);
+});
+
+app.get("/",(req,res) =>{
+    res.send("Hello from Render!")
 });
